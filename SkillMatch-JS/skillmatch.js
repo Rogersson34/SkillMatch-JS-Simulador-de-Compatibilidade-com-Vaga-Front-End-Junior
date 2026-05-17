@@ -72,14 +72,29 @@ candidatos.forEach(candidato => {
         const faltantes = vaga.requisitos.filter(
             req => !candidato.habilidades.includes(req)
         );
-
+        //criando variavel
         const compatibilidade = calcularCompatibilidade(
             candidato.habilidades,
             vaga.requisitos
         );
 
-        console.log(`Vaga: ${vaga.cargo}`);
-        console.log(`Faltantes: ${faltantes.join(", ")}`);
-        console.log(`Compatibilidade: ${compatibilidade}%`);
+        // Classificar a compatibilidade usando if e else
+        let classificacao = "";
+
+        if (compatibilidade === 100) {
+            classificacao = "Match Perfeito! 🚀";
+        } else if (compatibilidade >= 70) {
+            classificacao = "Alta Compatibilidade (Forte candidato) ✅";
+        } else if (compatibilidade >= 40) {
+            classificacao = "Média Compatibilidade (Precisa estudar alguns requisitos) ⚠️";
+        } else {
+            classificacao = "Baixa Compatibilidade (Não atende aos requisitos da vaga) ❌";
+        }
+        // ------------------------------------------
+
+        console.log(`Vaga: ${vaga.empresa} - ${vaga.cargo}`);
+        console.log(`Compatibilidade: ${compatibilidade}% - [${classificacao}]`);
+        console.log(`Faltantes: ${faltantes.join(", ") || "Nenhum"}`);
+        console.log("—");
     });
 });
