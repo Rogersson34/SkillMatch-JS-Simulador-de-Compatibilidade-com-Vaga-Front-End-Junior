@@ -1,27 +1,34 @@
 //Perfis do candidato
-const candidato = {
-    nome: "João Silva",
-    vaga: "Desenvolvedor Front-end",
-    habilidades: ["HTML", "CSS", "JavaScript", "React", "GitHub", "Trello"],
-    experieciaMeses: 3
-};
+const candidatos = [
+    {
+        nome: "João Silva",
+        vaga: "Desenvolvedor Front-end React",
+        habilidades: ["HTML", "CSS", "JavaScript", "React", "GitHub", "Trello"],
+        experienciaMeses: 12
+    },
 
-const candidato = {
-    nome: "Ana Julia",
-    vaga: "Desenvolvedor Front-end",
-    habilidades: ["HTML", "CSS", "JavaScript", "GitHub"],
-    experieciaMeses: 12
-};
+    {
+        nome: "Ana Julia",
+        vaga: "Desenvolvedor Front-end Junior",
+        habilidades: ["HTML", "CSS", "JavaScript", "GitHub"],
+        experienciaMeses: 6
+    },
 
-const candidato = {
-    nome: "Paulo César",
-    vaga: "Desenvolvedor Front-end",
-    habilidades: ["HTML", "CSS", "JavaScript", "React", "GitHub", "Trello"],
-    experieciaMeses: 6
-};
+    {
+        nome: "Paulo César",
+        vaga: "Desenvolvedor Front-end React",
+        habilidades: ["HTML", "CSS", "JavaScript", "React", "GitHub", "TypeScript", "Trello"],
+        experienciaMeses: 18
+    },
+    {
+        nome: "Maria Clara",
+        vaga: "Desenvolvedor Front-end Junior",
+        habilidades: ["HTML", "CSS", "GitHub", "Trello"],
+        experienciaMeses: 10
+    }
+];
 
 //Listar as vagas
-
 const vagas = [
     {
         id: 1,
@@ -49,4 +56,30 @@ const vagas = [
         modalidade: "Presencial"
     },
 
-]; 
+];
+
+
+// Calcular compatibilidade com cada vaga
+const calcularCompatibilidade = (habilidades, requisitos) => {
+    const atendidos = requisitos.filter(req => habilidades.includes(req)).length;
+    return Math.round((atendidos / requisitos.length) * 100);
+};
+
+candidatos.forEach(candidato => {
+    console.log(`\nCandidato: ${candidato.nome}`);
+
+    vagas.forEach(vaga => {
+        const faltantes = vaga.requisitos.filter(
+            req => !candidato.habilidades.includes(req)
+        );
+
+        const compatibilidade = calcularCompatibilidade(
+            candidato.habilidades,
+            vaga.requisitos
+        );
+
+        console.log(`Vaga: ${vaga.cargo}`);
+        console.log(`Faltantes: ${faltantes.join(", ")}`);
+        console.log(`Compatibilidade: ${compatibilidade}%`);
+    });
+});
