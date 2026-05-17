@@ -1,4 +1,4 @@
-//perfil do candidato
+//Perfis do candidato
 const candidato = {
     nome: "João Silva",
     vaga: "Desenvolvedor Front-end",
