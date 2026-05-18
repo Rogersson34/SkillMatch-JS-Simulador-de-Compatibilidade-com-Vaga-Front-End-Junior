@@ -108,5 +108,22 @@ function meuReduce(array, callback, valorInicial) {
     return acumulador;
 }
 
+class Vaga {
+    constructor(empresa, cargo, requisitos, salario, modalidade) {
+        this.empresa = empresa;
+        this.cargo = cargo;
+        this.requisitos = requisitos;
+        this.salario = salario;
+        this.modalidade = modalidade;
+    }
 
+    exibirResumo() {
+        return `${this.cargo} na empresa ${this.empresa}`;
+    }
+    createExampleObject() {
+        return {
+            exampleKey: 'exampleValue'
+        };
+    }
+}
 
