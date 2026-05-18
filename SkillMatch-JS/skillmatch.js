@@ -5,6 +5,14 @@ const candidatos = [
     { nome: "Paulo César", vaga: "Desenvolvedor Front-end React", habilidades: ["HTML", "CSS", "JavaScript", "React", "GitHub", "TypeScript", "Trello"], experienciaMeses: 18 },
     { nome: "Maria Clara", vaga: "Desenvolvedor Front-end Junior", habilidades: ["HTML", "CSS", "GitHub", "Trello"], experienciaMeses: 10 }
 ];
+//Uso do Push para adicionar um novo candidato
+candidatos.push({
+    nome: "Carlos Alberto",
+    vaga: "UX/UI",
+    habilidades: ["Figma", "Trello"],
+    experienciaMeses: 6
+});
+
 
 //Listar as vagas
 const vagas = [
@@ -13,7 +21,6 @@ const vagas = [
     { id: 3, empresa: "NovosTalentos", cargo: "Programador Front-End Júnior", requisitos: ["JavaScript", "GitHub", "Trello"], salario: 1800, modalidade: "Presencial" },
 
 ];
-
 
 // Calcular compatibilidade com cada vaga
 const calcularCompatibilidade = (habilidades, requisitos) => {
@@ -54,4 +61,52 @@ candidatos.forEach(candidato => {
         console.log(`Recomendação de Estudo: ${vaga.requisitos.join(", ") || "Nenhum"}`);//Gerar uma recomendação de estudo
     });
 });
-//Uso de Arrays
+
+// Uso de Arrays
+const candidatosFiltrados = candidatos.filter(candidato => {
+    return candidato.nome !== "João Silva" && candidato.nome !== "Ana Julia" && candidato.nome !== "Maria Clara";
+});
+
+console.log(candidatosFiltrados);
+
+//Map - Filter e Reduce
+function meuMap(array, callback) {
+    const novoArray = [];
+
+    for (let i = 0; i < array.length; i++) {
+        novoArray.push(callback(array[i], i, array));
+    }
+
+    return novoArray;
+}
+
+function meuFilter(array, callback) {
+    const novoArray = [];
+
+    for (let i = 0; i < array.length; i++) {
+        if (callback(array[i], i, array)) {
+            novoArray.push(array[i]);
+        }
+    }
+
+    return novoArray;
+}
+
+function meuReduce(array, callback, valorInicial) {
+    let acumulador = valorInicial;
+    let inicio = 0;
+
+    if (acumulador === undefined) {
+        acumulador = array[0];
+        inicio = 1;
+    }
+
+    for (let i = inicio; i < array.length; i++) {
+        acumulador = callback(acumulador, array[i], i, array);
+    }
+
+    return acumulador;
+}
+
+
+
