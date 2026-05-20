@@ -31,7 +31,6 @@ const calcularCompatibilidade = (habilidades, requisitos) => {
 candidatos.forEach(candidato => {
     console.log(`\nCandidato: ${candidato.nome}`);
 
-    // Retorna habilidades que faltam para uma vaga
     vagas.forEach(vaga => {
         const faltantes = vaga.requisitos.filter(
             req => !candidato.habilidades.includes(req)
@@ -63,7 +62,7 @@ candidatos.forEach(candidato => {
     });
 });
 
-// Metodo de Array: uso do filter
+// Uso de Arrays
 const candidatosFiltrados = candidatos.filter(candidato => {
     return candidato.nome !== "João Silva" && candidato.nome !== "Ana Julia" && candidato.nome !== "Maria Clara";
 });
@@ -92,7 +91,7 @@ function meuFilter(array, callback) {
 
     return novoArray;
 }
-//uso do reduce
+
 function meuReduce(array, callback, valorInicial) {
     let acumulador = valorInicial;
     let inicio = 0;
@@ -109,24 +108,68 @@ function meuReduce(array, callback, valorInicial) {
     return acumulador;
 }
 
-//Uso de uma classe e Uso do This
-class Vaga {
-    constructor(empresa, cargo, requisitos, salario, modalidade) {
-        this.empresa = empresa;
-        this.cargo = cargo;
-        this.requisitos = requisitos;
-        this.salario = salario;
-        this.modalidade = modalidade;
-    }
 
-    exibirResumo() {
-        return `${this.cargo} na empresa ${this.empresa}`;
-    }
-    createExampleObject() {
-        return {
-            exampleKey: 'exampleValue'
-        };
-    }
-}
+// Callback para processar o resultado da compatibilidade
+// Callback de notificação
+const notificar = (resultado) => {
+    const status = resultado.compatibilidade >= 50 ? "✅ Aprovado" : "❌ Reprovado";
+    console.log(`${status} | ${resultado.candidato} → ${resultado.vaga} (${resultado.compatibilidade}%)`);
+};
 
-//uso do callback
+// Processar e executar callback
+candidatos.forEach(candidato => {
+    vagas.forEach(vaga => {
+        notificar({
+            candidato: candidato.nome,
+            vaga: `${vaga.empresa} - ${vaga.cargo}`,
+            compatibilidade: calcularCompatibilidade(candidato.habilidades, vaga.requisitos)
+        });
+    });
+});
+
+// Closure - captura o candidato e retorna uma função que compara com a vaga
+const analisarCandidato = (candidato) => (vaga) => {
+    const compatibilidade = calcularCompatibilidade(candidato.habilidades, vaga.requisitos);
+    const status = compatibilidade >= 50 ? "✅ Aprovado" : "❌ Reprovado";
+    console.log(`${status} | ${candidato.nome} → ${vaga.empresa} (${compatibilidade}%)`);
+};
+
+// Uso
+candidatos.forEach(candidato => {
+    const analisar = analisarCandidato(candidato); // closure criada aqui
+    vagas.forEach(analisar);                        // reutilizada para cada vaga
+});
+
+// Simulando uma busca de vagas em uma API
+const buscarVagas = async () => {
+    return new Promise((resolve) => {
+        setTimeout(() => resolve(vagas), 1000);
+    });
+};
+
+const buscarCandidatos = async () => {
+    return new Promise((resolve) => {
+        setTimeout(() => resolve(candidatos), 1000);
+    });
+};
+
+const processarCandidatos = async () => {
+    try {
+        console.log("🔍 Buscando candidatos...");
+        const resultado = await buscarCandidatos();
+
+        meuFilter(resultado, c => c.experienciaMeses >= 10).forEach(candidato => {
+            meuMap(vagas, vaga => ({
+                empresa: vaga.empresa,
+                compatibilidade: calcularCompatibilidade(candidato.habilidades, vaga.requisitos)
+            })).forEach(({ empresa, compatibilidade }) => {
+                console.log(`${candidato.nome} → ${empresa} | ${compatibilidade}%`);
+            });
+        });
+
+    } catch (error) {
+        console.log(`❌ Erro: ${error.message}`);
+    }
+};
+
+processarCandidatos();
