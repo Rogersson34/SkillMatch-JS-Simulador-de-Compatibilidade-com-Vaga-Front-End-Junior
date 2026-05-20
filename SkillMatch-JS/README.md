@@ -34,3 +34,4 @@ O objetivo é automatizar e comparar as vagas correspondente a cada candidato;
 -Qual recomendação de estudo deve ser dada ao candidato. 
 
 Link video: 
+Link do Trello:

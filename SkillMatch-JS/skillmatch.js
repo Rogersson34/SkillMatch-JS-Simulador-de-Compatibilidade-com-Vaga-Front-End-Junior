@@ -31,6 +31,7 @@ const calcularCompatibilidade = (habilidades, requisitos) => {
 candidatos.forEach(candidato => {
     console.log(`\nCandidato: ${candidato.nome}`);
 
+    // Retorna habilidades que faltam para uma vaga
     vagas.forEach(vaga => {
         const faltantes = vaga.requisitos.filter(
             req => !candidato.habilidades.includes(req)
@@ -62,7 +63,7 @@ candidatos.forEach(candidato => {
     });
 });
 
-// Uso de Arrays
+// Metodo de Array: uso do filter
 const candidatosFiltrados = candidatos.filter(candidato => {
     return candidato.nome !== "João Silva" && candidato.nome !== "Ana Julia" && candidato.nome !== "Maria Clara";
 });
@@ -91,7 +92,7 @@ function meuFilter(array, callback) {
 
     return novoArray;
 }
-
+//uso do reduce
 function meuReduce(array, callback, valorInicial) {
     let acumulador = valorInicial;
     let inicio = 0;
@@ -108,6 +109,7 @@ function meuReduce(array, callback, valorInicial) {
     return acumulador;
 }
 
+//Uso de uma classe e Uso do This
 class Vaga {
     constructor(empresa, cargo, requisitos, salario, modalidade) {
         this.empresa = empresa;
@@ -127,3 +129,4 @@ class Vaga {
     }
 }
 
+//uso do callback
