@@ -34,3 +34,6 @@ O objetivo é automatizar e comparar as vagas correspondente a cada candidato;
 -Qual recomendação de estudo deve ser dada ao candidato. 
 
 Link video: 
+Link do Trello:
+
+Nós estamos fazendo um mini projeto com esse tema. um sistema que compara as habilidades do candidato com as habilidades que a empresa estabelece na vaga e faz um cruzamento, mostrando depois o nível de compatibilidade.

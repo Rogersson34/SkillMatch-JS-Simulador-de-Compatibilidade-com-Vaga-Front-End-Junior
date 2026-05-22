@@ -1,28 +1,110 @@
-//Perfis do candidato
+class Candidato {
+    constructor(nome, cargo, habilidades, meses) {
+        this.nome = nome;
+        this.cargo = cargo;
+        this.habilidades = habilidades;
+        this.meses = meses; // corrigido: era "tempoDeExperiencia" mas o parâmetro é "meses"
+    }
+
+    exibirResumo() {
+        return `${this.nome} atua na área de ${this.cargo}`;
+    }
+
+    calcularCompatibilidade(vaga) {
+        const habilidadesEmComum = this.habilidades.filter(h =>
+            vaga.requisitos.includes(h)
+        );
+        const percentual = (habilidadesEmComum.length / vaga.requisitos.length) * 100;
+        return Math.round(percentual);
+    }
+}
+class Vaga {
+    constructor(empresa, cargo, requisitos, salario, modalidade) { // corrigido: ordem dos parâmetros
+        this.empresa = empresa;
+        this.cargo = cargo;
+        this.requisitos = Array.isArray(requisitos) ? requisitos : [requisitos];
+        this.salario = salario;
+        this.modalidade = modalidade;
+    }
+
+    exibirResumo() {
+        return `${this.cargo} na empresa ${this.empresa} | Salário: R$ ${this.salario} | Modalidade: ${this.modalidade} | Requisitos: ${this.requisitos}`;
+    }
+}
+
 const candidatos = [
-    { nome: "João Silva", vaga: "Desenvolvedor Front-end React", habilidades: ["HTML", "CSS", "JavaScript", "React", "GitHub", "Trello"], experienciaMeses: 12 },
-    { nome: "Ana Julia", vaga: "Desenvolvedor Front-end Junior", habilidades: ["HTML", "CSS", "JavaScript", "GitHub"], experienciaMeses: 6 },
-    { nome: "Paulo César", vaga: "Desenvolvedor Front-end React", habilidades: ["HTML", "CSS", "JavaScript", "React", "GitHub", "TypeScript", "Trello"], experienciaMeses: 18 },
-    { nome: "Maria Clara", vaga: "Desenvolvedor Front-end Junior", habilidades: ["HTML", "CSS", "GitHub", "Trello"], experienciaMeses: 10 }
+    new Candidato(
+        "Matheus Silva",
+        "Desenvolvimento de Software",
+        ["HTML", "CSS", "JavaScript", "GitHub", "Trello", "Python", "Java"],
+        24
+    ),
+    new Candidato(
+        "Felipe Santos",
+        "Programador Front-end",
+        ["HTML", "CSS", "JavaScript"],
+        12
+    ),
+    new Candidato(
+        "Ana Julia",
+        "Programador Front-end Junior",
+        ["HTML", "CSS", "JavaScript", "GitHub"],
+        6
+    ),
+    new Candidato(
+        "Paulo César",
+        "Desenvolvedor Front-end React",
+        ["HTML", "CSS", "JavaScript", "React", "TypeScript", "GitHub", "Trello"],
+        18
+    ),
+    new Candidato(
+        "Maria Clara",
+        "Desenvolvedor Front-end Junior",
+        ["HTML", "CSS", "GitHub", "Trello"],
+        10
+    ),
 ];
-//Uso do Push para adicionar um novo candidato
-candidatos.push({
-    nome: "Carlos Alberto",
-    vaga: "UX/UI",
-    habilidades: ["Figma", "Trello"],
-    experienciaMeses: 6
-});
 
+candidatos.push(
+    new Candidato(
+        "Carlos Alberto",
+        "Programador Front-end / UX/UI",
+        ["HTML", "CSS", "JavaScript", "GitHub", "Figma", "Adobe XD"],
+        24
+    )
+);
 
-//Listar as vagas
 const vagas = [
-    { id: 1, empresa: "StarsRH", cargo: "Programador Front-End Júnior", requisitos: ["JavaScript", "GitHub", "React", "Node"], salario: 3000, modalidade: "Híbrido" },
-    { id: 2, empresa: "AgTech", cargo: "Desenvolvedor JavaScript, React", requisitos: ["JavaScript", "React", "Node", "TypeScript", "GitHub", "Trello"], salario: 3200, modalidade: "Remoto" },
-    { id: 3, empresa: "NovosTalentos", cargo: "Programador Front-End Júnior", requisitos: ["JavaScript", "GitHub", "Trello"], salario: 1800, modalidade: "Presencial" },
-
+    new Vaga(
+        "StarsRH",
+        "Programador Front-End Júnior",
+        ["JavaScript", "GitHub", "React", "TypeScript", "Node"],
+        3000,
+        "Híbrido"
+    ),
+    new Vaga(
+        "AgTech",
+        "Desenvolvedor JavaScript / React",
+        ["JavaScript", "React", "Node", "TypeScript", "GitHub", "Trello"],
+        3200,
+        "Remoto"
+    ),
+    new Vaga(
+        "NovosTalentos",
+        "Programador Front-End Júnior",
+        ["JavaScript", "GitHub", "Trello"],
+        1800,
+        "Presencial"
+    ),
+    new Vaga(
+        "DesignHub",
+        "Designer UX/UI",
+        ["Java Script", "Figma", "Trello", "Adobe XD"],
+        2500,
+        "Remoto"
+    )
 ];
 
-// Calcular compatibilidade com cada vaga
 const calcularCompatibilidade = (habilidades, requisitos) => {
     const atendidos = requisitos.filter(req => habilidades.includes(req)).length;
     return Math.round((atendidos / requisitos.length) * 100);
@@ -44,12 +126,11 @@ candidatos.forEach(candidato => {
         // Classificar a compatibilidade usando if e else
         let classificacao = "";
 
-        if (compatibilidade === 100) {
-            classificacao = "Match Perfeito, candidato atende todos os requisitos! 🚀";
-        } else if (compatibilidade >= 80) {
-            classificacao = "Alta Compatibilidade (Forte candidato) ✅";
+        if (compatibilidade >= 80) {
+            classificacao = "Alta Compatibilidade(Candidato atende todos os requisitos da vaga!) ✅";
         } else if (compatibilidade >= 50) {
-            classificacao = "Média Compatibilidade (Candidato atende alguns requisitos) ⚠️";
+            classificacao = "Média Compatibilidade (Forte candidato) ⚠️";
+
         } else {
             classificacao = "Baixa Compatibilidade (Não atende aos requisitos da vaga) ❌";
         }
@@ -62,51 +143,57 @@ candidatos.forEach(candidato => {
     });
 });
 
-// Uso de Arrays
-const candidatosFiltrados = candidatos.filter(candidato => {
-    return candidato.nome !== "João Silva" && candidato.nome !== "Ana Julia" && candidato.nome !== "Maria Clara";
+const analisarCandidato = (candidato) => (vaga) => {
+    const compatibilidade = calcularCompatibilidade(candidato.habilidades, vaga.requisitos);
+    const status = compatibilidade >= 50 ? "✅ Aprovado" : "❌ Reprovado";
+    console.log(`${status} | ${candidato.nome} → ${vaga.empresa} (${compatibilidade}%)`);
+};
+
+// Uso
+candidatos.forEach(candidato => {
+    const analisar = analisarCandidato(candidato); // closure criada aqui
+    vagas.forEach(analisar);                        // reutilizada para cada vaga
 });
 
-console.log(candidatosFiltrados);
+// Simulando uma busca de vagas em uma API
+const buscarVagas = async () => {
+    return new Promise((resolve) => {
+        setTimeout(() => resolve(vagas), 1000);
+    });
+};
 
-//Map - Filter e Reduce
-function meuMap(array, callback) {
-    const novoArray = [];
+const buscarCandidatos = async () => {
+    return new Promise((resolve) => {
+        setTimeout(() => resolve(candidatos), 1000);
+    });
+};
 
-    for (let i = 0; i < array.length; i++) {
-        novoArray.push(callback(array[i], i, array));
+// ✅ Definir ANTES de processarCandidatos
+const meuFilter = (arr, fn) => arr.filter(fn);
+const meuMap = (arr, fn) => arr.map(fn);
+const processarCandidatos = async () => {
+    try {
+        console.log("🔍 Buscando candidatos aprovados...");
+        const resultado = await buscarCandidatos();
+
+        meuFilter(resultado, c => c.meses >= 10).forEach(candidato => {
+            meuMap(vagas, vaga => ({
+                empresa: vaga.empresa,
+                compatibilidade: calcularCompatibilidade(candidato.habilidades, vaga.requisitos)
+            })).forEach(({ empresa, compatibilidade }) => {
+
+                // ✅ Só exibe se compatibilidade for >= 50% (aprovado)
+                if (compatibilidade >= 50) {
+                    console.log(`✅ APROVADO | ${candidato.nome} → ${empresa} | ${compatibilidade}%`);
+                }
+            });
+        });
+
+    } catch (error) {          // ← fecha o try
+        console.log(`❌ Erro: ${error.message}`);
     }
+};                             // ← fecha a função
 
-    return novoArray;
-}
-
-function meuFilter(array, callback) {
-    const novoArray = [];
-
-    for (let i = 0; i < array.length; i++) {
-        if (callback(array[i], i, array)) {
-            novoArray.push(array[i]);
-        }
-    }
-
-    return novoArray;
-}
-
-function meuReduce(array, callback, valorInicial) {
-    let acumulador = valorInicial;
-    let inicio = 0;
-
-    if (acumulador === undefined) {
-        acumulador = array[0];
-        inicio = 1;
-    }
-
-    for (let i = inicio; i < array.length; i++) {
-        acumulador = callback(acumulador, array[i], i, array);
-    }
-
-    return acumulador;
-}
-
+processarCandidatos();
 
 
