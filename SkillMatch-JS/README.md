@@ -33,7 +33,7 @@ O objetivo é automatizar e comparar as vagas correspondente a cada candidato;
 -Qual candidato possui maior compatibilidade
 -Qual recomendação de estudo deve ser dada ao candidato. 
 
-Link video: 
-Link do Trello:
+Link do video: https://drive.google.com/file/d/1UqYMj_qGMbu5XRdAI0b8Liw7TVQEPrUM/view
+Link do Trello:https://trello.com/b/4AweQxsV/backlog
+Link do GItHub:https://github.com/Rogersson34/SkillMatch-JS-Simulador-de-Compatibilidade-com-Vaga-Front-End-Junior/tree/main/SkillMatch-JS
 
-Nós estamos fazendo um mini projeto com esse tema. um sistema que compara as habilidades do candidato com as habilidades que a empresa estabelece na vaga e faz um cruzamento, mostrando depois o nível de compatibilidade.

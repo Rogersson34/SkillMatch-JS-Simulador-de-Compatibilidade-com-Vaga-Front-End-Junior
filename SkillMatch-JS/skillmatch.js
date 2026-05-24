@@ -1,28 +1,28 @@
-class Candidato {
-    constructor(nome, cargo, habilidades, meses) {
+class Candidato {// Aqui criamos uma classe para cada candidato
+    constructor(nome, cargo, habilidades, meses) {//O constructor ele roda automaticamente quando criamos um novo candidato
         this.nome = nome;
         this.cargo = cargo;
         this.habilidades = habilidades;
         this.meses = meses; // corrigido: era "tempoDeExperiencia" mas o parâmetro é "meses"
     }
 
-    exibirResumo() {
+    exibirResumo() {//no método exibirResumo vai descrever o candidato e seu cargo
         return `${this.nome} atua na área de ${this.cargo}`;
     }
 
-    calcularCompatibilidade(vaga) {
+    calcularCompatibilidade(vaga) {//usamos esse método para comparar a habilidade do candidato com os rerequisitos das vagas
         const habilidadesEmComum = this.habilidades.filter(h =>
-            vaga.requisitos.includes(h)
+            vaga.requisitos.includes(h)            //vamos filtrar as habilidades do candidato e verificar se ele atende as requisitos
         );
-        const percentual = (habilidadesEmComum.length / vaga.requisitos.length) * 100;
-        return Math.round(percentual);
+        const percentual = (habilidadesEmComum.length / vaga.requisitos.length) * 100;//Aqui vamos dividir o total das habilidades em comum pelo total dos requisitos e dividir por 100, para verificar o porcentual
+        return Math.round(percentual);//O math serve para arredondar os numeros de porcentagem
     }
 }
-class Vaga {
+class Vaga {//Criamos uma classe de vagas para cada objeto
     constructor(empresa, cargo, requisitos, salario, modalidade) { // corrigido: ordem dos parâmetros
         this.empresa = empresa;
         this.cargo = cargo;
-        this.requisitos = Array.isArray(requisitos) ? requisitos : [requisitos];
+        this.requisitos = Array.isArray(requisitos) ? requisitos : [requisitos];//Array is Array serve para criar uma lista
         this.salario = salario;
         this.modalidade = modalidade;
     }
@@ -32,7 +32,7 @@ class Vaga {
     }
 }
 
-const candidatos = [
+const candidatos = [//Aqui cria-se uma lista de objetos(candidatos)
     new Candidato(
         "Matheus Silva",
         "Desenvolvimento de Software",
@@ -65,7 +65,7 @@ const candidatos = [
     ),
 ];
 
-candidatos.push(
+candidatos.push(//Adicionamos um novo candidato
     new Candidato(
         "Carlos Alberto",
         "Programador Front-end / UX/UI",
@@ -73,7 +73,7 @@ candidatos.push(
         24
     )
 );
-
+//Aqui adicionamos as vagas disponiveis
 const vagas = [
     new Vaga(
         "StarsRH",
@@ -105,18 +105,19 @@ const vagas = [
     )
 ];
 
+//Aqui criamos uma função com Arrow Function
 const calcularCompatibilidade = (habilidades, requisitos) => {
     const atendidos = requisitos.filter(req => habilidades.includes(req)).length;
     return Math.round((atendidos / requisitos.length) * 100);
-};
+};//filter retornamos só os requisitos que estão nas habilidades
 
 candidatos.forEach(candidato => {
     console.log(`\nCandidato: ${candidato.nome}`);
-
-    vagas.forEach(vaga => {
+    //Aqui atribuimos o uso do forEach que percorre cada candidato e percorre todas as vagas, criando uma combinação
+    vagas.forEach(vaga => {//Aqui é para descobrir quais habilidades o candidato não possui
         const faltantes = vaga.requisitos.filter(
             req => !candidato.habilidades.includes(req)
-        );
+        );//Aqui calculamos a compatibilidade
         //criando variavel
         const compatibilidade = calcularCompatibilidade(
             candidato.habilidades,
@@ -142,35 +143,38 @@ candidatos.forEach(candidato => {
         console.log(`Recomendação de Estudo: ${vaga.requisitos.join(", ") || "Nenhum"}`);//Gerar uma recomendação de estudo
     });
 });
-
+console.log('=====================================================================');
+//Aqui usamos o método closure para analiza candidatos
 const analisarCandidato = (candidato) => (vaga) => {
     const compatibilidade = calcularCompatibilidade(candidato.habilidades, vaga.requisitos);
     const status = compatibilidade >= 50 ? "✅ Aprovado" : "❌ Reprovado";
     console.log(`${status} | ${candidato.nome} → ${vaga.empresa} (${compatibilidade}%)`);
 };
 
-// Uso
+
 candidatos.forEach(candidato => {
     const analisar = analisarCandidato(candidato); // closure criada aqui
     vagas.forEach(analisar);                        // reutilizada para cada vaga
 });
 
-// Simulando uma busca de vagas em uma API
+// Simulando e usando funções assíncronas para uma busca de vagas em uma API
 const buscarVagas = async () => {
     return new Promise((resolve) => {
-        setTimeout(() => resolve(vagas), 1000);
+        setTimeout(() => resolve(vagas), 5000);//Aqui usamos o setTimeout para simular um delay(tempo)
     });
 };
 
 const buscarCandidatos = async () => {
-    return new Promise((resolve) => {
-        setTimeout(() => resolve(candidatos), 1000);
+    return new Promise((resolve) => {//uso de promisse para simular um delay
+        setTimeout(() => resolve(candidatos), 5000);//
     });
 };
 
-// ✅ Definir ANTES de processarCandidatos
-const meuFilter = (arr, fn) => arr.filter(fn);
-const meuMap = (arr, fn) => arr.map(fn);
+//Aqui usamos meu filter, meu candidato e processarCandidatos
+const meuFilter = (arr, fn) => arr.filter(fn);//percorre o array e retorna true
+const meuMap = (arr, fn) => arr.map(fn);//percorre o array e transforma cada item em função
+console.log('=====================================================================');
+//Aqui usamos a função processarCandidatos, que junta tudo, busca candidatos, filtra os experiente, calcula a compatibilidade e exibi apenas os aprovados
 const processarCandidatos = async () => {
     try {
         console.log("🔍 Buscando candidatos aprovados...");
