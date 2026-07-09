@@ -41,3 +41,12 @@
     }
 
 }
+
+input {
+    width: 100%;
+    /* Altera a largura da caixa */
+    height: 40px;
+    /* Altera a altura da caixa */
+    padding: 10px;
+    /* Adiciona espaço interno */
+}
