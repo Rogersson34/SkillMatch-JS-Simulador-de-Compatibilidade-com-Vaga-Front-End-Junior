@@ -31,18 +31,38 @@
             <p>São centenas de vagas de emprego e empresas que buscam talentos como você, nossa missão é te ajudar a
                 encontrar o seu próximo trabalho.</p>
             <main>
-                <h3>Encontre a vaga ideal para você</h3>
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" required>
-                <label for="area">Área:</label>
-                <input type="text" placeholder="Digite o cargo desejado">
-                <label for="habilidade">Habilidades:</label>
-                <input type="text" id="habilidade" name="habilidade" required>
+                <section class="form">
+                    <h3>Encontre a vaga ideal para você</h3>
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+
+                    <div class="form">
+                        <label for="area">Área:</label>
+                        <select id="area" name="area" aria-describedby="erro-area">
+                            <option value="Selecione">Selecione...</option>
+                            <option value="Front-end">Front-end</option>
+                            <option value="Back-end">Back-end</option>
+                            <option value="Dados">Dados</option>
+                            <option value="Design">Design</option>
+                        </select>
+                        <span class="erro" id="erro-area" aria-live="polite"></span>
+                    </div>
+
+                    <div class="form">
+                        <label for="habilidades">Habilidades:</label>
+                        <input type="text" id="habilidades" name="habilidades" placeholder="Digite suas habilidades" />
+
+                        <div class="form">
+                            <label for="experiencia">Experiência:</label>
+                            <input type="number" id="experiencia" name="experiencia"
+                                placeholder="Digite sua experiência em meses" min="0" step="1" />
+                        </div>
+                        <a href="#" class="buscar-vagas">Buscar Vagas</a>
+                </section>
             </main>
-            <a href="#" class="contact-btn">Buscar Vagas</a>
         </div>
         <div class="img-headline">
-            <img style="max-width: 90%;" src="img/hero_right.png">
+            <img style="max-width: 90%;" src="./assets/img/hero_right.png">
         </div>
     </header>
     <section>
@@ -112,5 +132,6 @@
         href="https://api.whatsapp.com/send?phone=5549988070996&text=Ol%C3%A1%20peguei%20seu%20contato%20no%20site"><img
             style="width: 100px;" src="./assets/img/whats.png"></a>
 </body>
+<script src="./assets/scripts/dados.js"></script>
 
 </html>
