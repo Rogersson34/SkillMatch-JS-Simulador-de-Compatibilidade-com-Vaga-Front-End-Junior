@@ -281,3 +281,167 @@ footer {
     color: var(--cor-texto-suave);
     margin: 0;
 }
+
+/**/
+
+.destaque-recomendacao {
+    background: linear-gradient(180deg, #fffbeb 0%, #ffffff 70%);
+    border: 2px solid var(--cor-alerta);
+    border-radius: var(--raio);
+    padding: 1rem 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.destaque-recomendacao h3 {
+    margin: 0 0 0.4rem 0;
+    font-size: 1.05rem;
+}
+
+.destaque-recomendacao p {
+    margin: 0;
+    font-size: 0.92rem;
+}
+
+/* ---------------- Lista de vagas (Flexbox) ---------------- */
+.lista-vagas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.vaga-card {
+    background: var(--cor-cartao);
+    border-radius: var(--raio);
+    box-shadow: var(--sombra);
+    padding: 1.1rem;
+    border: 1px solid var(--cor-borda);
+    flex: 1 1 100%;
+}
+
+.vaga-card.melhor-match {
+    border: 2px solid var(--cor-alerta);
+}
+
+.vaga-cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.vaga-cargo {
+    font-size: 1.02rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.vaga-meta {
+    font-size: 0.8rem;
+    color: var(--cor-texto-suave);
+    margin: 0.2rem 0 0.7rem 0;
+}
+
+.selo-melhor {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: var(--cor-alerta);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25rem 0.55rem;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+/* Barra de progresso */
+.percentual-linha {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+.barra-progresso {
+    width: 100%;
+    height: 10px;
+    background: #e5e7eb;
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 0.9rem;
+}
+
+.barra-progresso-preenchimento {
+    height: 100%;
+    border-radius: 999px;
+    transition: width 0.4s ease-in-out;
+}
+
+.faixa-alta {
+    background: var(--cor-sucesso);
+}
+
+.faixa-média,
+.faixa-media {
+    background: var(--cor-alerta);
+}
+
+.faixa-baixa {
+    background: var(--cor-erro);
+}
+
+/* Listas de habilidades (Flexbox) */
+.grupo-habilidades {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.grupo-habilidades h5 {
+    margin: 0 0 0.4rem 0;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--cor-texto-suave);
+}
+
+.lista-habilidades {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.lista-habilidades li {
+    font-size: 0.78rem;
+    padding: 0.25rem 0.55rem;
+    border-radius: 999px;
+}
+
+.habilidade-encontrada {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.habilidade-faltante {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.sem-habilidades {
+    font-size: 0.8rem;
+    color: var(--cor-texto-suave);
+    margin: 0;
+}
+
+/* ---------------- Rodapé ---------------- */
+.rodape {
+    text-align: center;
+    color: var(--cor-texto-suave);
+    font-size: 0.8rem;
+    padding: 1.5rem 1rem 2rem;
+}
