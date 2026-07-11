@@ -14,6 +14,22 @@ body {
     margin-top: 0.25rem;
 }
 
+
+:root {
+    --cor-fundo: #f3f5f9;
+    --cor-cartao: #ffffff;
+    --cor-primaria: #4f46e5;
+    --cor-primaria-escura: #4338ca;
+    --cor-texto: #1f2430;
+    --cor-texto-suave: #6b7280;
+    --cor-erro: #dc2626;
+    --cor-sucesso: #16a34a;
+    --cor-alerta: #FF2978;
+    --cor-borda: #e2e5ec;
+    --raio: 12px;
+    --sombra: 0 4px 14px rgba(17, 24, 39, 0.08);
+}
+
 .navbar {
     display: flex;
     flex-flow: row wrap;
@@ -233,4 +249,35 @@ footer {
     bottom: 5px;
     right: 5px;
 
+}
+
+/* Daqui pra frente é código novo*/
+.status-mensagem {
+    text-align: center;
+    color: var(--cor-primaria);
+    font-weight: 600;
+    min-height: 1.2em;
+    margin: 0;
+}
+
+.status-erro {
+    text-align: center;
+    color: var(--cor-erro);
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+}
+
+.status-erro:not(:empty) {
+    padding: 0.75rem;
+}
+
+.contador-analises {
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--cor-texto-suave);
+    margin: 0;
 }
