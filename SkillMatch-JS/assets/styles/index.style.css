@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.dica {
+    font-size: 0.6rem;
+    margin-top: 0.25rem;
+}
+
+.navbar {
+    display: flex;
+    flex-flow: row wrap;
+    height: 100px;
+    background: white;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+}
+
+.logo {
+    flex: 20%;
+    margin-left: 10%;
+    /* border:1px solid red;  */
+    text-align: left;
+}
+
+.logo h1 {
+    font-family: 'Lobster', cursive;
+    color: #180F4A;
+    font-size: 34px;
+}
+
+.menu {
+    flex: 70%;
+    /* border:1px solid green;*/
+    text-align: right;
+    padding: 20px;
+}
+
+.menu a {
+    color: #180F4A;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 20px 16px;
+}
+
+.menu a:hover {
+    color: #FF2978;
+    border-top: 4px solid #180F4A;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.form select#area {
+
+    margin-bottom: 1rem;
+    /*verificar*/
+    font-size: 0.9rem;
+    border-radius: 5px;
+    border: 1px solid #FF2978;
+}
+
+.form input {
+    border-radius: 5px;
+    border: 1px solid #FF2978;
+    margin-bottom: 1rem;
+}
+
+
+#botao {
+    background: #180F4A;
+    padding: 5px 15px;
+    color: #fff;
+    border-radius: 5px;
+    margin-right: 10%;
+    margin-left: 5%;
+
+}
+
+#botao:hover {
+    border: none;
+    background: #FF2978;
+}
+
+.header {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    padding-top: 100px;
+}
+
+.headline {
+    margin-left: 10%;
+    flex: 40%;
+    /* border:1px solid black; */
+}
+
+.headline h2 {
+    font-weight: 900;
+    font-size: 20px;
+    color: #180F4A;
+    padding: 0;
+    margin: 0;
+}
+
+.headline p {
+    color: gray;
+    text-align: left;
+}
+
+.buscar-vagas {
+    display: inline-block;
+    background: #FF2978;
+    padding: 0.8rem 1rem;
+    color: white;
+    text-transform: uppercase;
+    border-radius: 8px;
+    text-decoration: none;
+
+}
+
+.buscar-vagas:hover {
+    background: #180F4A;
+}
+
+.img-headline {
+    margin-right: 10%;
+    flex: 40%;
+    /* border:1px solid deeppink; */
+    text-align: center;
+}
+
+section {
+    display: inline-block;
+    margin-top: 80px;
+    /* border:1px solid black; */
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 5%;
+    text-align: center;
+
+}
+
+section h2 {
+    width: 100%;
+    font-size: 50px;
+    margin: 0;
+    font-family: 'Lobster', cursive;
+    font-weight: bold;
+    color: #180F4A;
+}
+
+main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+.servicos {
+    display: inline-block;
+    margin-top: 5%;
+}
+
+.card {
+    display: inline-block;
+    width: 30%;
+    padding: 20px;
+    margin: 1%;
+    border: 1px solid #FF2978;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.texto-oculto {
+    display: none;
+}
+
+.card:hover {
+    background: #FF2978;
+    color: white;
+    padding: 40px;
+}
+
+.card:hover img {
+    display: none;
+}
+
+.card:hover .card-text {
+    display: none;
+}
+
+.card:hover .texto-oculto {
+    display: block;
+}
+
+footer {
+    margin-top: 100px;
+    height: 400px;
+    background-image: linear-gradient(180deg, #180F4A, #090422, black);
+    text-align: center;
+    border-top: 5px solid #FF2978;
+}
+
+.logo-rodape {
+    padding: 100px;
+}
+
+.agencia {
+    font-family: 'Lobster', cursive;
+    color: white;
+    font-size: 34px;
+}
+
+.whats {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+
+}

@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Um site de exemplo do modulo de CSS">
+    <meta
+        name="Agility Tech: informe seu perfil e habilidades e descubra o percentual de compatibilidade com vagas reais de tecnologia, com recomendação de estudo personalizada."
+        content="Um site de exemplo do modulo de CSS">
     <meta name="keywords" content="Agencia Digital, CSS, HTML">
-    <link rel="stylesheet" href="./assets/style/index.style.css">
-    <link rel="stylesheet" href="./assets/style/responsivo.css">
+    <link rel="stylesheet" href="./assets/styles/index.style.css">
+    <link rel="stylesheet" href="./assets/styles/responsivo.css">
     <title>Agility Tech</title>
 </head>
 
 <body>
+
     <nav class="navbar">
         <div class="logo">
             <h1>Agility Tech RH</h1>
@@ -24,47 +27,62 @@
             <a id="botao" href="#">Área do Candidato</a>
         </div>
     </nav>
+
     <header class="header">
         <div class="headline">
             <h2 style="letter-spacing: 15px;">você achou a melhor</h2>
             <h2 style="font-size:80px">Agência de Recursos Humanos</h2>
             <p>São centenas de vagas de emprego e empresas que buscam talentos como você, nossa missão é te ajudar a
                 encontrar o seu próximo trabalho.</p>
-            <main>
-                <section class="form">
-                    <h3>Encontre a vaga ideal para você</h3>
-                    <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
 
-                    <div class="form">
-                        <label for="area">Área:</label>
-                        <select id="area" name="area" aria-describedby="erro-area">
-                            <option value="Selecione">Selecione...</option>
-                            <option value="Front-end">Front-end</option>
-                            <option value="Back-end">Back-end</option>
-                            <option value="Dados">Dados</option>
-                            <option value="Design">Design</option>
-                        </select>
-                        <span class="erro" id="erro-area" aria-live="polite"></span>
-                    </div>
+            <div class="form">
+                <h3>Encontre a vaga ideal para você</h3>
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" autocomplete="name" aria-describedby="erro-nome" />
+                <span class="erro" id="erro-nome" aria-live="polite"></span>
+            </div>
 
-                    <div class="form">
-                        <label for="habilidades">Habilidades:</label>
-                        <input type="text" id="habilidades" name="habilidades" placeholder="Digite suas habilidades" />
+            <div class="form">
+                <label for="area">Área:</label>
+                <select id="area" name="area" aria-describedby="erro-area">
+                    <option value="Selecione">Selecione...</option>
+                    <option value="Front-end">Front-end</option>
+                    <option value="Back-end">Back-end</option>
+                    <option value="Dados">Dados</option>
+                    <option value="Design">Design</option>
+                </select>
+                <span class="erro" id="erro-area" aria-live="polite"></span>
+            </div>
 
-                        <div class="form">
-                            <label for="experiencia">Experiência:</label>
-                            <input type="number" id="experiencia" name="experiencia"
-                                placeholder="Digite sua experiência em meses" min="0" step="1" />
-                        </div>
-                        <a href="#" class="buscar-vagas">Buscar Vagas</a>
-                </section>
-            </main>
+            <div class="form">
+                <label for="habilidades">Habilidades:</label>
+                <input type="text" id="habilidades" name="habilidades" placeholder="Digite suas habilidades"
+                    aria-describedby="erro-habilidades dica-habilidades" />
+                <span class="dica" id="dica-habilidades">
+                    Exemplo: HTML, CSS, JavaScript, GitHub
+                </span>
+                <span class="erro" id="erro-habilidades" aria-live="polite"></span>
+            </div>
+
+            <div class="form">
+                <label for="experiencia">Experiência:</label>
+                <input type="number" id="experiencia" name="experiencia" placeholder="Digite sua experiência em meses"
+                    min="0" step="1" aria-describedby="erro-experiencia" />
+                <span class="erro" id="erro-experiencia" aria-live="polite"></span>
+            </div>
+            <button type="submit" class="buscar-vagas">
+                Buscar Vagas
+            </button>
+            <!-- <a href="#" class="buscar-vagas">Buscar Vagas</a>-->
         </div>
+        </section>
+
         <div class="img-headline">
             <img style="max-width: 90%;" src="./assets/img/hero_right.png">
         </div>
     </header>
+
+    <!---------------------------------------------------------->
     <section>
         <h2>Encontre aqui as vagas que mais se adequam ao seu perfil</h2>
         <div class="servicos">
@@ -84,7 +102,9 @@
                         distinctio doloremque quia officiis, asperiores, consectetur dolorem magnam doloribus eos odio
                         quibusdam? Excepturi corrupti labore necessitatibus?</p>
                 </div>
+
             </div>
+
             <div class="card">
                 <img src="./assets/img/smartphone.png">
                 <div class="card-text">
@@ -94,6 +114,7 @@
                         distinctio doloremque quia officiis, asperiores, consectetur dolorem magnam doloribus eos odio
                         quibusdam? Excepturi corrupti labore necessitatibus?</p>
                 </div>
+
                 <div class="texto-oculto">
                     <h3>Outro conteúdo qualquer</h3>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae nobis totam omnis veritatis
@@ -101,7 +122,8 @@
                         distinctio doloremque quia officiis, asperiores, consectetur dolorem magnam doloribus eos odio
                         quibusdam? Excepturi corrupti labore necessitatibus?</p>
                 </div>
-            </div>
+
+            </div>//
             <div class="card">
                 <img src="./assets/img/marketing.png">
                 <div class="card-text">
@@ -111,6 +133,7 @@
                         distinctio doloremque quia officiis, asperiores, consectetur dolorem magnam doloribus eos odio
                         quibusdam? Excepturi corrupti labore necessitatibus?</p>
                 </div>
+
                 <div class="texto-oculto">
                     <h3>Outro conteúdo qualquer</h3>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae nobis totam omnis veritatis
@@ -126,12 +149,12 @@
             <h1 class="agencia">Agility Tech</h1>
             <p style="color:white">Solucões em Recursos Humanos</p>
         </div>
-        <b style="color:white;">Copyright © 2026 Agility Tech - Todos os direitos reservados.</b>
+        <p style="color:white;">Copyright © 2026 Agility Tech - Todos os direitos reservados.</p>
     </footer>
     <a class="whats" target="_blank"
         href="https://api.whatsapp.com/send?phone=5549988070996&text=Ol%C3%A1%20peguei%20seu%20contato%20no%20site"><img
             style="width: 100px;" src="./assets/img/whats.png"></a>
 </body>
-<script src="./assets/scripts/dados.js"></script>
+<script type="module" src="./assets/scripts/main.js"></script>
 
 </html>
