@@ -85,10 +85,6 @@ export class VagaFrontEnd extends Vaga {
         this.stack = dadosVaga.stack || "Não informado";
     }
 
-
-
-
-
     calcularCompatibilidade(habilidadesCandidato) {
         // Reaproveita o cálculo padrão da classe-mãe (this.requisitos)
         const resultadoBase = super.calcularCompatibilidade(habilidadesCandidato);
@@ -111,9 +107,6 @@ export class VagaFrontEnd extends Vaga {
 
         return resultadoBase;
     }
-
-
-
     rotulo() {
         return `${this.cargo} · ${this.empresa} (Stack: ${this.stack})`;
     }
