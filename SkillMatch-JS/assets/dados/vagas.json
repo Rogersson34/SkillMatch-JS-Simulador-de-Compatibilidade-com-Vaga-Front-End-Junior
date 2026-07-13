@@ -1,0 +1,99 @@
+[
+    {
+        "id": 1,
+        "empresa": "NimbusTech",
+        "cargo": "Desenvolvedor(a) Front-end Júnior",
+        "area": "Front-end",
+        "requisitos": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Git",
+            "React"
+        ],
+        "salario": 3200,
+        "modalidade": "Remoto",
+        "experienciaRequerida": 6,
+        "stack": "React"
+    },
+    {
+        "id": 2,
+        "empresa": "Orbita Digital",
+        "cargo": "Desenvolvedor(a) Front-end Pleno",
+        "area": "Front-end",
+        "requisitos": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "React",
+            "TypeScript",
+            "Git"
+        ],
+        "salario": 5400,
+        "modalidade": "Híbrido",
+        "experienciaRequerida": 24,
+        "stack": "React"
+    },
+    {
+        "id": 3,
+        "empresa": "Casa do Código",
+        "cargo": "Desenvolvedor(a) Front-end Júnior",
+        "area": "Front-end",
+        "requisitos": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Git",
+            "Figma"
+        ],
+        "salario": 2900,
+        "modalidade": "Presencial",
+        "experienciaRequerida": 3,
+        "stack": "Figma"
+    },
+    {
+        "id": 4,
+        "empresa": "BackBone Systems",
+        "cargo": "Desenvolvedor(a) Back-end Júnior",
+        "area": "Back-end",
+        "requisitos": [
+            "Node.js",
+            "SQL",
+            "Git",
+            "API REST"
+        ],
+        "salario": 3600,
+        "modalidade": "Remoto",
+        "experienciaRequerida": 6
+    },
+    {
+        "id": 5,
+        "empresa": "DataFlux Analytics",
+        "cargo": "Analista de Dados Júnior",
+        "area": "Dados",
+        "requisitos": [
+            "SQL",
+            "Python",
+            "Excel",
+            "Power BI"
+        ],
+        "salario": 3400,
+        "modalidade": "Híbrido",
+        "experienciaRequerida": 6
+    },
+    {
+        "id": 6,
+        "empresa": "Estúdio Prisma",
+        "cargo": "UI Designer Júnior",
+        "area": "Design",
+        "requisitos": [
+            "Figma",
+            "HTML",
+            "CSS",
+            "Design System"
+        ],
+        "salario": 3000,
+        "modalidade": "Remoto",
+        "experienciaRequerida": 3
+    }
+]
