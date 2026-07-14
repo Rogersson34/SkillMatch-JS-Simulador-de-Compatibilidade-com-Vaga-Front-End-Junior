@@ -51,3 +51,10 @@ input {
     padding: 10px;
     /* Adiciona espaço interno */
 }
+
+@media (min-width: 720px) {
+    .vaga-card {
+        /* duas colunas de cards a partir daqui */
+        flex: 1 1 calc(50% - 0.5rem);
+    }
+}
