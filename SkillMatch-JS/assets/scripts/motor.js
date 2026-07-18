@@ -31,8 +31,6 @@ export class Vaga {
     /**
      * Compara as habilidades do candidato com os requisitos desta vaga.
      * habilidadesEncontradas / totalDeRequisitos * 100
-     * @param {string[]} habilidadesCandidato
-     * @returns {{encontradas: string[], faltantes: string[], percentual: number, classificacao: string}}
      */
     calcularCompatibilidade(habilidadesCandidato) {
         const candidatoNormalizado = habilidadesCandidato.map((h) =>
@@ -71,13 +69,9 @@ export class Vaga {
     }
 }
 
-/**
- * Vaga especializada em front-end.
- * Por que existe herança aqui: vagas de front-end têm uma "stack"
- * principal (ex.: React). Quando o candidato já domina essa stack,
- * isso pesa mais do que apenas contar requisitos genéricos — por isso
- * a subclasse SOBRESCREVE calcularCompatibilidade para aplicar um bônus,
- * e sobrescreve rotulo() para deixar a stack visível no card.
+/*
+ *Vaga especializada em front-end.
+ *Temos uma herança aqui: vagas de front-end têm uma "stack"
  */
 export class VagaFrontEnd extends Vaga {
     constructor(dadosVaga) {
@@ -85,6 +79,10 @@ export class VagaFrontEnd extends Vaga {
         this.stack = dadosVaga.stack || "Não informado";
     }
 
+    /* Quando o candidato já domina essa stack,
+  *isso pesa mais do que apenas contar requisitos genéricos — por isso
+  *a subclasse SOBRESCREVE calcularCompatibilidade para aplicar um bônus,
+  *e sobrescreve rotulo() para deixar a stack visível no card.*/
     calcularCompatibilidade(habilidadesCandidato) {
         // Reaproveita o cálculo padrão da classe-mãe (this.requisitos)
         const resultadoBase = super.calcularCompatibilidade(habilidadesCandidato);
@@ -114,7 +112,6 @@ export class VagaFrontEnd extends Vaga {
 
 /**
  * Cria o objeto do candidato a partir dos dados do formulário.
- * @param {{nome: string, area: string, habilidades: string[], experienciaMeses: number}} dados
  */
 export function criarCandidato({ nome, area, habilidades, experienciaMeses }) {
     return {
@@ -125,36 +122,21 @@ export function criarCandidato({ nome, area, habilidades, experienciaMeses }) {
     };
 }
 
-/**
- * Analisa uma lista de vagas contra as habilidades do candidato.
- * Recebe um CALLBACK opcional, chamado a cada vaga analisada — útil,
- * por exemplo, para dar feedback em tempo real na interface.
- * @param {Vaga[]} vagas
- * @param {string[]} habilidadesCandidato
- * @param {(vaga: Vaga, resultado: object) => void} [aoAnalisarVaga] callback
- * @returns {Vaga[]} as próprias vagas, agora com `.resultado` preenchido
- */
-export function analisarTodasAsVagas(vagas, habilidadesCandidato, aoAnalisarVaga) {
-    return vagas.map((vaga) => {
-        const resultado = vaga.calcularCompatibilidade(habilidadesCandidato);
+//Encontra a vaga de maior compatibilidade.
+export function analisarTodasAsVagas(vagas, habilidadesCandidato, callback) {
+    return vagas.map(vaga => {
+        const res = vaga.calcularCompatibilidade(habilidadesCandidato);
 
-        if (typeof aoAnalisarVaga === "function") {
-            aoAnalisarVaga(vaga, resultado); // uso do callback
+        if (callback) {
+            callback(vaga, res);
         }
-
         return vaga;
     });
 }
 
-/**
- * Encontra a vaga de maior compatibilidade.
- * Em caso de empate no percentual, usa a experiência do candidato como
- * critério de desempate: vence a vaga cuja experiência exigida está
- * mais próxima da experiência que o candidato já tem.
- * @param {Vaga[]} vagasAnalisadas
- * @param {number} experienciaCandidato em meses
- * @returns {Vaga|null}
- */
+/*Em caso de empate no percentual, usa a experiência do candidato como
+critério de desempate: vence a vaga cuja experiência exigida está
+ mais próxima da experiência que o candidato já tem.*/
 export function encontrarMelhorVaga(vagasAnalisadas, experienciaCandidato) {
     if (vagasAnalisadas.length === 0) return null;
 
@@ -181,8 +163,7 @@ export function encontrarMelhorVaga(vagasAnalisadas, experienciaCandidato) {
 
 /**
  * Gera uma recomendação de estudo com base na habilidade que mais falta
- * na vaga de melhor compatibilidade.
- * @param {Vaga|null} melhorVaga
+ na vaga de melhor compatibilidade.
  */
 export function gerarRecomendacaoDeEstudo(melhorVaga) {
     if (!melhorVaga) {
@@ -208,10 +189,10 @@ export function primeiraVagaAltaCompatibilidade(vagasAnalisadas) {
 }
 
 /**
- * Fábrica de um contador de análises feitas na sessão.
- * Usa CLOSURE: a variável `total` fica "presa" na função retornada,
- * sem ser acessível/alterável de fora.
- * @returns {() => number} função que incrementa e retorna o novo total
+  Fábrica de um contador de análises feitas na sessão.
+ Usa CLOSURE: a variável `total` fica "presa" na função retornada,
+ sem ser acessível/alterável de fora.
+  função que incrementa e retorna o novo total
  */
 export function criarContadorDeAnalises() {
     let total = 0;

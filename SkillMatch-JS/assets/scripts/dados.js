@@ -1,12 +1,10 @@
-//Cria uma constante chamada CAMINHO_VAGAS.
+//Define o endereço onde o arquivo com as vagas está guardado no projeto.
 const CAMINHO_VAGAS = "./assets/dados/vagas.json";
 const CHAVE_PERFIL = "skillmatch:perfil";//Essa constante guarda o nome que será usado dentro do localStorage, que serve como uma gaveta do navegador.
 //O texto "skillmatch:perfil" funciona como a etiqueta dessa gaveta.
 
-/**
- * Esta função retorna uma Promise contendo um Array.
- * @returns {Promise<Array>}
- */
+
+// Esta função retorna uma Promise contendo um Array.
 export async function buscarVagas() { //export=pode ser usado  em outros arquivos
     //async: busca dados do servidor e consulta Api
     //cria-se uma função chamada buscarVagas
@@ -14,21 +12,18 @@ export async function buscarVagas() { //export=pode ser usado  em outros arquivo
     //O await faz com que a execução espere a resposta do servidor antes de continuar.
     if (!resposta.ok) {
         throw new Error(`Falha ao buscar vagas (status ${resposta.status})`);
-    }//Aqui o programa lança um erro(404).
+    }//Verifica se a busca deu certo. Se o arquivo não for encontrado (Erro 404) ou o servidor falhar (Erro 500)
 
     const vagas = await resposta.json();//converte o JSON em um array
     return vagas;//Devolve o resultado para quem chamou a função.
 }
 
-/**
- * Salva o perfil do candidato no localStorage.
- * @param {object} perfil
- */
-export function salvarPerfil(perfil) {
+// Salva o perfil do candidato no localStorage.
+export function salvarPerfil(perfil) {//Cria uma função que pode ser usada em outros arquivos do projeto, recebendo os dados do perfil como argumento.
     try {          //setItem: recebe 2 parametros, a chave e o valor
         localStorage.setItem(CHAVE_PERFIL, JSON.stringify(perfil));//O método JSON.stringify() faz exatamente essa conversão de objeto para texto.
-        //O localStorage funciona como um pequeno banco de dados do navegador.
-        //Ele guarda informações mesmo após fechar a página.        
+        //O localStorage, ele guarda informações mesmo após fechar a página.
+
     } catch (erro) {
         //Se acontecer algum problema durante o try, o programa não trava. Em vez disso, ele entra no catch, onde o erro é tratado.
         console.error("Não foi possível salvar o perfil no localStorage:", erro);

@@ -44,7 +44,6 @@ function limparResultados() {
 
 /**
  * Exibe as mensagens de erro de validação nos campos do formulário.
- * @param {{nome: string, area: string, habilidades: string, experiencia: string}} erros
  */
 export function exibirErrosFormulario(erros) {
     Object.entries(erros).forEach(([campo, mensagem]) => {
@@ -80,10 +79,6 @@ export function preencherFormulario(perfil) {
 /**
  * Renderiza a lista de vagas analisadas, o destaque da melhor vaga,
  * a recomendação de estudo e o contador de análises da sessão.
- * @param {import('./motor.js').Vaga[]} vagasAnalisadas
- * @param {import('./motor.js').Vaga|null} melhorVaga
- * @param {string} recomendacao
- * @param {number} totalAnalises
  */
 export function renderizarResultados(
     vagasAnalisadas,
@@ -134,7 +129,7 @@ function criarDestaqueMelhorVaga(melhorVaga, recomendacao) {
 }
 
 /**
- * Cria o card de uma vaga usando createElement/classList (RF11),
+ * Cria o card de uma vaga usando createElement/classList ,
  * sem escrever HTML fixo.
  */
 function criarCardVaga(vaga, ehMelhor) {
